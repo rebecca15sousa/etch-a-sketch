@@ -16,7 +16,6 @@ function makeGrid(size) {
 makeGrid(size);
 
 const cellBlack = document.querySelectorAll('.contCell');
-
 cellBlack.forEach(function(contCell) {
     contCell.addEventListener('mouseover', function() {
         //contCell.style.backgroundColor = 'black';
@@ -24,7 +23,18 @@ cellBlack.forEach(function(contCell) {
     })
 })
 
-function paintCell(bla) {
-    bla.style.backgroundColor = 'black';
+function paintCell(cellColor) {
+    cellColor.style.backgroundColor = 'black';
+}
+
+const button = document.querySelector('.btn');
+button.addEventListener('click', function() {
+    clearGrid(cellBlack);
+})
+
+function clearGrid(cellErase) {
+    cellErase.forEach(function(contCell) {
+        contCell.style.backgroundColor = 'white';
+    })
 }
 
