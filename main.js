@@ -3,10 +3,10 @@ const container = document.querySelector('.container');
 let cell;
 let size = 16;
 
-function makeGrid(size) {
-    container.style.setProperty('--columns', size);
-    container.style.setProperty('--rows', size);
-    for(let i = 0; i < (size * size); i++) {
+function makeGrid(units) {
+    container.style.setProperty('--columns', units);
+    container.style.setProperty('--rows', units);
+    for(let i = 0; i < (units * units); i++) {
         cell = document.createElement('div');
         cell.classList.add('contCell');
         container.appendChild(cell);
@@ -30,6 +30,9 @@ function paintCell(cellColor) {
 const button = document.querySelector('.btn');
 button.addEventListener('click', function() {
     clearGrid(cellBlack);
+    size = prompt('What size?');
+    Number(size);
+    makeGrid(size)
 })
 
 function clearGrid(cellErase) {
