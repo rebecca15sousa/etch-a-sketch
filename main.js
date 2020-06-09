@@ -1,6 +1,7 @@
-const container = document.querySelector('.container');
+let container = document.querySelector('.container');
 
 let cell;
+let cellAllColor;
 let size = 16;
 
 function makeGrid(units) {
@@ -10,18 +11,20 @@ function makeGrid(units) {
         cell = document.createElement('div');
         cell.classList.add('contCell');
         container.appendChild(cell);
+        selectCells();
     }
 }
 
 makeGrid(size);
 
-const cellBlack = document.querySelectorAll('.contCell');
-cellBlack.forEach(function(contCell) {
-    contCell.addEventListener('mouseover', function() {
-        //contCell.style.backgroundColor = 'black';
-        paintCell(contCell);
-    })
-})
+function selectCells() {
+    cellAllColor = document.querySelectorAll('.contCell');
+    cellAllColor.forEach(function(contCell) {
+        contCell.addEventListener('mouseover', function() {
+            paintCell(contCell);
+        });
+    });
+}
 
 function paintCell(cellColor) {
     cellColor.style.backgroundColor = 'black';
@@ -29,15 +32,11 @@ function paintCell(cellColor) {
 
 const button = document.querySelector('.btn');
 button.addEventListener('click', function() {
-    clearGrid(cellBlack);
+    container.textContent = '';
+    let cellArray = Array.from(cellAllColor);
+    cellArray = [];
     size = prompt('What size?');
     Number(size);
-    makeGrid(size)
-})
-
-function clearGrid(cellErase) {
-    cellErase.forEach(function(contCell) {
-        contCell.style.backgroundColor = 'white';
-    })
-}
+    makeGrid(size);
+});
 
